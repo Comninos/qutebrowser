@@ -19,6 +19,16 @@ breaking changes (such as renamed commands) can happen in minor releases.
 v3.8.0 (unreleased)
 -------------------
 
+Added
+~~~~~
+
+- New experimental `:extension-load`, `:extension-install`, `:extension-unload`,
+  `:extension-uninstall`, `:extension-enable`, `:extension-disable` and
+  `:extension-popup` commands to manage Chromium WebExtensions with QtWebEngine
+  6.10+. `.crx` files are unpacked with their store extension ID preserved.
+  Enabling or disabling extensions currently requires `--force`, as it is known
+  to crash QtWebEngine 6.10 and 6.11.
+
 Removed
 ~~~~~~~
 

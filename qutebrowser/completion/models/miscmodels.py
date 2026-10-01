@@ -219,6 +219,29 @@ def inspector_position(*, info):
     return model
 
 
+def webextension(*, info):
+    """A model to complete on loaded WebExtensions."""
+    from qutebrowser.browser import webextensions
+    from qutebrowser.api import cmdutils
+    utils.unused(info)
+    model = completionmodel.CompletionModel(column_widths=(30, 50, 20))
+    try:
+        extensions = webextensions.manager().extensions()
+    except cmdutils.CommandError:
+        extensions = []
+
+    entries = [
+        (
+            ext.id(),
+            ext.name(),
+            "enabled" if ext.isEnabled() else "disabled",
+        )
+        for ext in extensions
+    ]
+    model.add_category(listcategory.ListCategory("Extensions", entries))
+    return model
+
+
 def _qdatetime_to_completion_format(qdate):
     if not qdate.isValid():
         ts = 0

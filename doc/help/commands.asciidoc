@@ -71,6 +71,13 @@ possible to run or bind multiple commands by separating them with `;;`.
 |<<download-retry,download-retry>>|Retry the first failed/[count]th download.
 |<<edit-text,edit-text>>|Open an external editor with the currently selected form field.
 |<<edit-url,edit-url>>|Navigate to a url formed in an external editor.
+|<<extension-disable,extension-disable>>|Disable a loaded WebExtension.
+|<<extension-enable,extension-enable>>|Enable a loaded WebExtension.
+|<<extension-install,extension-install>>|Install a WebExtension so it gets loaded on every start.
+|<<extension-load,extension-load>>|Load an unpacked WebExtension until qutebrowser is restarted.
+|<<extension-popup,extension-popup>>|Open the toolbar popup of a WebExtension in a new tab.
+|<<extension-uninstall,extension-uninstall>>|Uninstall a WebExtension and remove its files.
+|<<extension-unload,extension-unload>>|Unload a WebExtension.
 |<<fake-key,fake-key>>|Send a fake keypress or key string to the website or qutebrowser.
 |<<forward,forward>>|Go forward in the history of the current tab.
 |<<fullscreen,fullscreen>>|Toggle fullscreen mode.
@@ -637,6 +644,85 @@ The editor which should be launched can be configured via the `editor.command` c
 * +*-p*+, +*--private*+: Open a new window in private browsing mode.
 * +*-r*+, +*--related*+: If opening a new tab, position the tab as related to the current one (like clicking on a link).
 
+
+[[extension-disable]]
+=== extension-disable
+Syntax: +:extension-disable [*--force*] 'ext-id'+
+
+Disable a loaded WebExtension.
+
+==== positional arguments
+* +'ext-id'+: The ID of the extension.
+
+==== optional arguments
+* +*-f*+, +*--force*+: Disable it even though this is known to crash QtWebEngine.
+
+[[extension-enable]]
+=== extension-enable
+Syntax: +:extension-enable [*--force*] 'ext-id'+
+
+Enable a loaded WebExtension.
+
+==== positional arguments
+* +'ext-id'+: The ID of the extension.
+
+==== optional arguments
+* +*-f*+, +*--force*+: Enable it even though this is known to crash QtWebEngine.
+
+[[extension-install]]
+=== extension-install
+Syntax: +:extension-install 'path'+
+
+Install a WebExtension so it gets loaded on every start.
+
+Extensions are loaded disabled, see `:extension-enable`.
+
+==== positional arguments
+* +'path'+: Absolute path to an unpacked extension directory, a .zip or a .crx file.
+
+
+[[extension-load]]
+=== extension-load
+Syntax: +:extension-load 'path'+
+
+Load an unpacked WebExtension until qutebrowser is restarted.
+
+Extensions are loaded disabled, see `:extension-enable`.
+
+==== positional arguments
+* +'path'+: Absolute path to an unpacked extension directory or a .crx file.
+
+[[extension-popup]]
+=== extension-popup
+Syntax: +:extension-popup [*--bg*] 'ext-id'+
+
+Open the toolbar popup of a WebExtension in a new tab.
+
+==== positional arguments
+* +'ext-id'+: The ID of the extension.
+
+==== optional arguments
+* +*-b*+, +*--bg*+: Open in a background tab.
+
+[[extension-uninstall]]
+=== extension-uninstall
+Syntax: +:extension-uninstall 'ext-id'+
+
+Uninstall a WebExtension and remove its files.
+
+==== positional arguments
+* +'ext-id'+: The ID of the extension.
+
+[[extension-unload]]
+=== extension-unload
+Syntax: +:extension-unload 'ext-id'+
+
+Unload a WebExtension.
+
+Installed extensions will be loaded again on the next start.
+
+==== positional arguments
+* +'ext-id'+: The ID of the extension.
 
 [[fake-key]]
 === fake-key
